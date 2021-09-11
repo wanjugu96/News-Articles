@@ -1,9 +1,13 @@
-body {
-    overflow-x: hidden;
-}
-
 nav {
     padding: 30px;
+}
+
+
+/* source item list */
+
+.source {
+    background-color: antiquewhite;
+    margin: 40px;
 }
 
 

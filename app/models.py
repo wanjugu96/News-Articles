@@ -1,14 +1,14 @@
-class Source:
+class Sources:
     '''
     class to define news sources
     '''
     pass
 
-def __inti__(self,id,name,description,url):
-    self.id=id
-    self.name=name
-    self.description=description
-    self.url=url
+    def __init__(self,id,name,description,url):
+        self.id=id
+        self.name=name
+        self.description=description
+        self.url=url
 
 class Article:
     '''
