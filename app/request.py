@@ -11,3 +11,30 @@ def configure_request(app):
     api_key=app.config['NEWS_API_KEY']
     articles_base_url=app.config['NEWS_ARTICLES_BASE_URL']
     sources_base_url=app.config['NEWS_SOURCES_BASE_URL']
+
+
+def get_sources(id):
+    '''
+    functio that gets all our news sources
+    '''
+
+    get_sources_url=base_url.format(api_key)
+
+    with urllib.request.urlopen(get_sources_url) as url:
+        get_sources_data=url.read()
+        get_sources_response=json.loads(get_sources_data)
+
+        sources_results=None
+
+        if get_sources_response['sources']:
+            sources_results_list=get_sources_response['sources']
+            sources_results=process_results(sources_results_list)
+
+        return sources_results
+
+def process_results(sources_list):
+
+    '''
+    Function  that processes the movie result and transform them to a list of Objects
+    '''
+
