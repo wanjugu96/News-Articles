@@ -15,7 +15,7 @@ def configure_request(app):
 
 def get_sources(id):
     '''
-    functio that gets all our news sources
+    function that gets all our news sources
     '''
 
     get_sources_url=base_url.format(api_key)
@@ -37,4 +37,17 @@ def process_results(sources_list):
     '''
     Function  that processes the movie result and transform them to a list of Objects
     '''
+    sources_results=[]
+    for source_item in sources_list:
+        id=source_item.get('id')
+        name=source_item.get('name')
+        description=source_item.get('description')
+        url=source_item.get('url')
+
+        source_obj=Source(id,name,description,url)
+
+        sources_results.append(source_obj)
+
+        return sources_results
+
 
