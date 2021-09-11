@@ -13,7 +13,7 @@ def configure_request(app):
     sources_base_url=app.config['NEWS_SOURCES_BASE_URL']
 
 
-def get_sources(id):
+def get_sources():
     '''
     function that gets all our news sources
     '''
