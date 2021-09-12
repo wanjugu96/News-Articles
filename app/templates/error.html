@@ -1,6 +1,31 @@
-{% extends 'base.html'%}
-{% block body%}
-{%for article in articles%}
-<h1>{{article.title}}</h1>
-{%endfor%}
+{% extends 'base.html' %}
+{%block head%}
+<title>business</title>
+
+{{ super() }}
 {%endblock%}
+
+{% block navbar%}
+{{ super() }}
+
+{%endblock%}
+{%block body%}
+<div class="container">
+    {%for article in articles%}
+         <h1>{{article.author}}</h1>
+        <p>{{article.title}}</p>
+       
+        <a href="{{article.url}}">
+        <button type="button" class="btn btn-info"> read online
+        </button>
+        </a>
+        <img src="{{article.urlToImage}}" style="height:200px;width:200px;" alt="{{article.title}}" "/>
+        
+        <p>{{article.publishedAt}}</p>
+        {%endfor%}
+</div>
+
+
+
+{%endblock%}
+   

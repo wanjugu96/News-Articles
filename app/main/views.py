@@ -1,13 +1,30 @@
 from flask import render_template,redirect,request,url_for
 from . import main
-from ..request import get_sources,get_articles
+from ..request import  get_one_source, get_sources,get_articles,get_source
 #from ..models
 
-@main.route('/')
+@main.route('/<sourceid>',methods = ['GET', 'POST'])
+def sports_articles(sourceid):
+   #sportsources=get_sources('sports')
+
+    # for sportsource in sportsources:
+    #     id=sportsource.id
+    #     sportssourceid=id
+    articles=get_articles(sourceid)
+
+    #articles=get_articles('wired')
+    #articles=get_articles(sportssourceid)
+
+    return render_template('articles.html',articles=articles,)
+
+
+@main.route('/' ,methods = ['GET', 'POST'])
+
 def index():
     '''
     View root page function that returns the index page and its data
     '''
+    
     Techsources=get_sources('technology')
     #category=Techsources.category
 
@@ -16,39 +33,24 @@ def index():
     entertainment=get_sources('entertainment')
     health=get_sources('health')
 
-    print(sportsources)
-    # biz_sources=get_sources('sports')
-    
-    # for biz_source in biz_sources:
-    #     biz_source.id=id
-
     
     sportsources=get_sources('sports')
-    sourceid=sportsources[0].id
+    if request.method == 'POST':
+        sourceid=request.form['sourceid']
 
-    articles=get_articles(sourceid)
+        return redirect(url_for('.sports_articles',sourceid=sourceid))
+
   
 
+    return  render_template('index.html',health=health,sportsources=sportsources,Techsources=Techsources,businesssources=businesssources,entertainment=entertainment)
 
 
-   
-    return  render_template('index.html',sourceid=sourceid,health=health,sportsources=sportsources,Techsources=Techsources,businesssources=businesssources,entertainment=entertainment)
-
-@main.route('/<sourceid>')
-def articles(sourceid):
     
-   
+# @main.route('/')                           
+# def business_articles():
 
-    sportsources=get_sources('sports')
-    sourceid=sportsources[0].id
-
-    #articles=get_articles('wired')
-    articles=get_articles(sourceid)
-
-
-
-
-    return render_template('articles.html',articles=articles,sourceid=sourceid)
+#     businesssources=get_sources('sports')
+#     articles=get_article_list(businesssources)
+#     return render_template('articles.html',articles=articles)
                             
-
 

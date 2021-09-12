@@ -12,22 +12,32 @@ def configure_request(app):
     articles_base_url=app.config['NEWS_ARTICLES_BASE_URL']
     sources_base_url=app.config['NEWS_SOURCES_BASE_URL']
 
-# def get_source(source_id,category):
-#     '''
-#     function that gets all our news sources
-#     '''
+def get_source(source_id,category):
+    '''
+    function that gets all our news sources
+    '''
 
-#     get_source_url=sources_base_url.format(category,api_key)
+    get_source_url=sources_base_url.format(category,api_key)
 
-#     with urllib.request.urlopen(get_sources_url) as url:
-#         get_sources_data=url.read()
-#         get_sources_response=json.loads(get_sources_data)
+    with urllib.request.urlopen(get_source_url) as url:
+        get_source_data=url.read()
+        get_source_response=json.loads(get_source_data)
 
-#         sources_results=None
+        source_object=None
 
-#         if get_sources_response['sources']:
-#             sources_results_list=get_sources_response['sources']
-    #         sources_results=process_results(sources_results_list)
+        if get_source_response:
+            id=get_source_response.get('id')
+            name=get_source_response.get('name')
+            description=get_source_response.get('description')
+            url=get_source_response.get('url')
+            category=get_source_response.get('category')
+
+            source_object=Sources(id,name,description,url,category)
+
+    return source_object
+
+      
+            
 
         
     # return sources_results
@@ -115,3 +125,11 @@ def process_articles(articles_list):
     return article_result
 
 
+def get_one_source(id,category):
+
+    sources=get_sources(category)
+    for source in sources:
+        if source.id==id:
+            return source
+    
+    return source

@@ -7,8 +7,11 @@
 {%endblock%}
 {% block body%}
 <div class="row">
+
 <div class="col-md-3">
-		
+ {%for source in source_list%}
+            <input type="submit" name="sourceid" value="zzzzz{{source.id}}"/>
+            {%endfor%}
 		 <div id="wrapper">
         
             <!-- Sidebar -->
@@ -17,6 +20,7 @@
             <ul class="sidebar-nav" style="margin-left:0;">
 
             <h3 style="color:white; margin:25px;">Categories</h3>
+            
             <h3 style="color:white; margin:25px;">{{sourceid}}</h3>
 
             
@@ -24,14 +28,14 @@
                  </li>
 		
                 <li>
-                    <a href="/{{sourceid}}"><i class="fa fa-sort-alpha-asc " aria-hidden="true"> </i> <span style="margin-left:10px;">Business</span>  </a>
+                    <a href="/business class="fa fa-sort-alpha-asc " aria-hidden="true"> </i> <span style="margin-left:10px;">Business</span>  </a>
                 </li>
                 <li>
                     <a href="#"> <i class="fa fa-play-circle-o " aria-hidden="true"> </i> <span style="margin-left:10px;"> Technology</span> </a>
                 </li>
                 
                 <li>
-                    <a href="#"> <i class="fa fa-font" aria-hidden="true"> </i> <span style="margin-left:10px;"> sports</span> </a>
+                    <a href="/sportssourceid"> <i class="fa fa-font" aria-hidden="true"> </i> <span style="margin-left:10px;"> sports</span> </a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-info-circle " aria-hidden="true"> </i> <span style="margin-left:10px;">Entertainment </span> </a>
@@ -39,6 +43,7 @@
                 <li>
                 </li>
             </ul>
+            
         </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -66,8 +71,17 @@
 
     <div class="col-md-8">
     <h3>News sourcesssssssss</h3>
-    <div class="source "
-    {{macro.displaysources(sportsources)}}
+    <div class="source ">
+    {%for source in sportsources%}
+    <form action="" method="post" name="source">
+    <p>source id {{source.id}}</p>
+    <p>name: {{source.name}}</p>
+    <p>description {{source.description}}</p>
+    <p>url {{source.url}}</p>
+    <p>category:{{source.category}}</p>
+    <input type="submit" name="sourceid" value="{{source.id}}"/>
+</form>
+{% endfor %}
     </div>
     
     </div>
