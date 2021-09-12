@@ -1,6 +1,6 @@
 from flask import render_template,redirect,request,url_for
 from . import main
-from ..request import get_sources
+from ..request import get_sources,get_articles
 #from ..models
 
 @main.route('/')
@@ -15,7 +15,40 @@ def index():
     businesssources=get_sources('business')
     entertainment=get_sources('entertainment')
     health=get_sources('health')
-    
-    print(sportsources)
 
-    return  render_template('index.html',health=health,sportsources=sportsources,Techsources=Techsources,businesssources=businesssources,entertainment=entertainment)
+    print(sportsources)
+    # biz_sources=get_sources('sports')
+    
+    # for biz_source in biz_sources:
+    #     biz_source.id=id
+
+    
+    sportsources=get_sources('sports')
+    sourceid=sportsources[0].id
+
+    articles=get_articles(sourceid)
+  
+
+
+
+   
+    return  render_template('index.html',sourceid=sourceid,health=health,sportsources=sportsources,Techsources=Techsources,businesssources=businesssources,entertainment=entertainment)
+
+@main.route('/<sourceid>')
+def articles(sourceid):
+    
+   
+
+    sportsources=get_sources('sports')
+    sourceid=sportsources[0].id
+
+    #articles=get_articles('wired')
+    articles=get_articles(sourceid)
+
+
+
+
+    return render_template('articles.html',articles=articles,sourceid=sourceid)
+                            
+
+
