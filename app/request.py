@@ -33,6 +33,28 @@ def get_sources(category):
         
     return sources_results
 
+def get_articles(source):
+    '''
+    function that gets all our news sources
+    '''
+    get_articles_url=articles_base_url.format(source,api_key)
+
+    with urllib.request.irlopen(get_articles_url)as url:
+        get_aricles_data=url.read()
+        get_articles_response=json.loads(get_aricles_data)
+
+
+        articles_results=None
+
+        if get_articles_response['articles']:
+            articles_results_list=get_articles_response['articles']
+            articles_results=process_results(articles_results_list)
+    
+    return articles_results
+
+
+
+
 def process_results(sources_list):
 
     '''
@@ -44,8 +66,10 @@ def process_results(sources_list):
         name=source_item.get('name')
         description=source_item.get('description')
         url=source_item.get('url')
+        category=source_item.get('category')
+      
 
-        source_obj=Sources(id,name,description,url)
+        source_obj=Sources(id,name,description,url,category)
 
         sources_results.append(source_obj)
 

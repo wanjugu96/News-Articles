@@ -1,7 +1,7 @@
 import os
 class Config:
     NEWS_ARTICLES_BASE_URL='https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'
-    NEWS_SOURCES_BASE_URL='https://newsapi.org/v2/top-headlines/sources?category={}&apiKey={}'
+    NEWS_SOURCES_BASE_URL='https://newsapi.org/v2/top-headlines/sources?category={}&language=en&apiKey={}'
 
     #https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=b7b2a5ee0f444390abfb0b9c2d91502c
     #GET https://newsapi.org/v2/top-headlines?country=de&category=business&apiKey=b7b2a5ee0f444390abfb0b9c2d91502c

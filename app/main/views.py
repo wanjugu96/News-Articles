@@ -8,7 +8,14 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    sportsources=get_sources('technology')
+    Techsources=get_sources('technology')
+    #category=Techsources.category
+
+    sportsources=get_sources('sports')
+    businesssources=get_sources('business')
+    entertainment=get_sources('entertainment')
+    health=get_sources('health')
+    
     print(sportsources)
 
-    return  render_template('index.html',sportsources=sportsources)
+    return  render_template('index.html',health=health,sportsources=sportsources,Techsources=Techsources,businesssources=businesssources,entertainment=entertainment)
