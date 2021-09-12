@@ -40,9 +40,25 @@ def index():
 
         return redirect(url_for('.sports_articles',sourceid=sourceid))
 
+    return render_template('index.html',sources=Techsources)
   
+@main.route('/business' ,methods = ['GET', 'POST'])
 
-    return  render_template('index.html',health=health,sportsources=sportsources,Techsources=Techsources,businesssources=businesssources,entertainment=entertainment)
+def business():
+    '''
+    View root page function that returns the business sources page
+    '''
+    
+    
+    businesssources=get_sources('business')
+   
+    if request.method == 'POST':
+        sourceid=request.form['sourceid']
+
+        return redirect(url_for('.sports_articles',sourceid=sourceid))
+
+  
+    return  render_template('business.html',sources=businesssources)
 
 
     
