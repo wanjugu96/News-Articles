@@ -1,48 +1,49 @@
-{% extends 'base.html'%}
-{% import 'macros.html' as macro%}
-{%block head%}
-{{super()}}
-<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% extends 'base.html'%} {% import 'macros.html' as macro%} {%block head%} {{super()}}
+<title>Home</title>
 
-{%endblock%}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> {%endblock%}
 <div class="container">
     <div class="row">
-     {% block body%}
+        {% block body%}
         <div class="col-md-4">
-           
+
             {{super()}}
-            
+
+        </div>
+        {%endblock%} {%block right%}
+
+        <div class="source  col-md-8">
+
+            <h2>Entertainment Sources</h2>
+            {%for source in sources%}
+
+            <form action="" method="post" name="source">
+
+                <div class="card cards">
+                    <h5 class="card-header">{{source.name}}</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">{{source.description}}</p>
+                        <a href="{{source.url}}" class="btn btn-primary">visit online</a>
+                        <input type="submit" class="btn btn-info" name="sourceid" value="{{source.id}}" />
+                    </div>
+                </div>
+            </form>
+
+
+
+
+            {% endfor %}
         </div>
         {%endblock%}
-            
-                
-            
-                {%block right%}
-                    
-                <div class="source  col-md-8">
-                
-                    <h3>Entertainment sourcesssssssss</h3>
-                    {%for source in sources%}
-                    <form action="" method="post" name="source">
-                    <p>source id {{source.id}}</p>
-                    <p>name: {{source.name}}</p>
-                    <p>description {{source.description}}</p>
-                    <p>url {{source.url}}</p>
-                    <p>category:{{source.category}}</p>
-                    <input type="submit" name="sourceid" value="{{source.id}}"/>
-                    </form>
-                    {% endfor %}
-                    </div>
-                {%endblock%}
-            
-    </div>       
-</div>  
-   
-   
-    <script>
-    $("#menu-toggle").cpck(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
 
+    </div>
+</div>
+
+
+<script>
+    $("#menu-toggle ").cpck(function(e) {
+        e.preventDefault();
+        $("#wrapper ").toggleClass("toggled ");
+    });
+</script>
