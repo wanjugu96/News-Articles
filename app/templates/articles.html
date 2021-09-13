@@ -1,31 +1,64 @@
-{% extends 'base.html' %}
-{%block head%}
-<title>Articles</title>
-
-{{ super() }}
-{%endblock%}
-
-{% block navbar%}
-{{ super() }}
-
-{%endblock%}
-{%block body%}
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<head>
+<body>
+<nav class="navbar  sticky-top navbar-expand-lg  navbar-dark bg-dark">
+  
+  <a class="navbar-brand" href="/">
+    <img src="static/images/297675-ffffff.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    News App
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Technology">Technology</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/business">Business</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/sports">Sports</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/entertainamet">Entertainamet</a>
+      </li>
+      
+      
+      
+    </ul>
+  </div>
+ </nav>
 <div class="container">
-    {%for article in articles%}
-         <h1>{{article.author}}</h1>
-        <p>{{article.title}}</p>
-       
-        <a href="{{article.url}}">
-        <button type="button" class="btn btn-info"> read online
-        </button>
-        </a>
-        <img src="{{article.urlToImage}}" style="height:200px;width:200px;" alt="{{article.title}}" "/>
-        
-        <p>{{article.publishedAt}}</p>
-        {%endfor%}
+    <div class="row">
+    <h1>true</h1>
+       {%for article in articles%}
+                
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{article.urlToImage}}" alt="{{article.urlToImage}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{article.title}}</h5>
+                            <p class="card-text">Published on : {{article.description}}</p>
+                            <p class="card-text">Published on : {{article.publishedAt}}</p>
+                            
+                            <a href="{{article.url}}" class="btn btn-primary">Read Online</a>
+                        </div>
+                        </div>
+                        
+
+                    </div>
+                        {%endfor%}
+    </div>
+
 </div>
+</body>
 
-
-
-{%endblock%}
-   
+</html>

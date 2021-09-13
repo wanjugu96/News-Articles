@@ -4,18 +4,13 @@ from ..request import  get_one_source, get_sources,get_articles,get_source
 #from ..models
 
 @main.route('/<sourceid>',methods = ['GET', 'POST'])
-def sports_articles(sourceid):
-   #sportsources=get_sources('sports')
-
-    # for sportsource in sportsources:
-    #     id=sportsource.id
-    #     sportssourceid=id
+def articles(sourceid):
+  
     articles=get_articles(sourceid)
 
-    #articles=get_articles('wired')
-    #articles=get_articles(sportssourceid)
+    sourcename=sourceid
 
-    return render_template('articles.html',articles=articles,)
+    return render_template('articles.html',articles=articles,sourcename=sourcename)
 
 
 @main.route('/' ,methods = ['GET', 'POST'])
@@ -26,19 +21,11 @@ def index():
     '''
     
     Techsources=get_sources('technology')
-    #category=Techsources.category
-
-    sportsources=get_sources('sports')
-    businesssources=get_sources('business')
-    entertainment=get_sources('entertainment')
-    health=get_sources('health')
-
-    
-    sportsources=get_sources('sports')
+   
     if request.method == 'POST':
         sourceid=request.form['sourceid']
 
-        return redirect(url_for('.sports_articles',sourceid=sourceid))
+        return redirect(url_for('.articles',sourceid=sourceid))
 
     return render_template('index.html',sources=Techsources)
   
@@ -55,18 +42,46 @@ def business():
     if request.method == 'POST':
         sourceid=request.form['sourceid']
 
-        return redirect(url_for('.sports_articles',sourceid=sourceid))
+        return redirect(url_for('.articles',sourceid=sourceid))
 
   
     return  render_template('business.html',sources=businesssources)
 
 
     
-# @main.route('/')                           
-# def business_articles():
+@main.route('/entertainment' ,methods = ['GET', 'POST'])
 
-#     businesssources=get_sources('sports')
-#     articles=get_article_list(businesssources)
-#     return render_template('articles.html',articles=articles)
-                            
+def entertainment():
+    '''
+    View root page function that returns the business sources page
+    '''
+    
+    businesssources=get_sources('entertainment')
+   
+    if request.method == 'POST':
+        sourceid=request.form['sourceid']
 
+        return redirect(url_for('.articles',sourceid=sourceid))
+
+  
+    return  render_template('entertainment.html',sources=businesssources)
+
+@main.route('/sports' ,methods = ['GET', 'POST'])
+
+def sports():
+    '''
+    View root page function that returns the business sources page
+    '''
+    
+    sportsources=get_sources('sports')
+   
+    if request.method == 'POST':
+        sourceid=request.form['sourceid']
+
+        return redirect(url_for('.articles',sourceid=sourceid))
+
+  
+    return  render_template('sports.html',sources=sportsources)
+
+
+    

@@ -2,12 +2,46 @@ nav {
     padding: 30px;
 }
 
+.containerss {
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: space-evenly;
+    /* background-color: blue; */
+}
+
+.box-1 {
+    width: 140px;
+    height: 140px;
+    background-color: yellow;
+    border: 2px solid black;
+    font-size: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-md-3 {
+    margin: 20px;
+}
+
+#tech li {
+    list-style-image: url('images/tech.png')
+}
+
+.flex_direction {
+    display: flex;
+    flex-direction: row;
+}
+
 
 /* source item list */
 
 .source {
     background-color: antiquewhite;
-    margin: 40px;
+    margin-right: 0;
+    margin-top: 10px;
 }
 
 
@@ -66,7 +100,7 @@ nav {
     width: 200px;
     margin: 0;
     padding: 0;
-    list-style: none;
+    list-style-image: url('images/tech.png')
 }
 
 .sidebar-nav li {
@@ -233,7 +267,7 @@ nav {
 .fa-ul {
     padding-left: 0;
     margin-left: 2.14285714em;
-    list-style-type: none
+    list-style-image: url('images/tech.png')
 }
 
 .fa-ul>li {
