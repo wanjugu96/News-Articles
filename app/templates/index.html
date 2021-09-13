@@ -14,7 +14,7 @@
 
         <div class="source  col-md-8">
 
-            <h2>Technology Sources</h2>
+            <h2 id="sourcenm">Technology Sources</h2>
             {%for source in sources%}
 
             <form action="" method="post" name="source">
@@ -24,7 +24,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Special title treatment</h5>
                         <p class="card-text">{{source.description}}</p>
-                        <a href="{{source.url}}" class="btn btn-primary">visit online</a>
+                        <a href="{{source.url}}" class="btn btn-primary">Official site</a>
+                        <h6 class="card-text">Get top headlines below </h6>
                         <input type="submit" class="btn btn-info" name="sourceid" value="{{source.id}}" />
                     </div>
                 </div>

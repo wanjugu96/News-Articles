@@ -2,6 +2,19 @@ nav {
     padding: 30px;
 }
 
+.all {
+    background-color: rgba(0, 0, 0, 0.151);
+}
+
+#sourcenm {
+    margin: 30px;
+    text-decoration: underline overline;
+}
+
+.article {
+    background-color: rgba(0, 0, 0, 0.151);
+}
+
 .cards {
     margin: 15px;
 }

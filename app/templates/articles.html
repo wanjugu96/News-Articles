@@ -6,7 +6,7 @@
 
     <head>
 
-        <body>
+        <body class="article">
             <nav class="navbar  sticky-top navbar-expand-lg  navbar-dark bg-dark">
 
                 <a class="navbar-brand" href="/">
@@ -21,7 +21,7 @@
                             <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Technology">Technology</a>
+                            <a class="nav-link" href="/">Technology</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/business">Business</a>
@@ -30,7 +30,7 @@
                             <a class="nav-link" href="/sports">Sports</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/entertainamet">Entertainamet</a>
+                            <a class="nav-link" href="/entertainment">Entertainment</a>
                         </li>
 
 
@@ -40,7 +40,7 @@
             </nav>
             <div class="container">
                 <div class="row">
-                    <h1>{{sourcename}}'s Top Headlines</h1>
+                    <h1 id="sourcenm">{{sourcename}}'s Top Headlines</h1>
 
                     {%for article in articles%}
 
